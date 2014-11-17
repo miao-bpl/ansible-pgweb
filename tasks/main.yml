@@ -1,0 +1,15 @@
+---
+- name: Download pgweb
+  get_url: >
+    url=https://github.com/sosedoff/pgweb/releases/download/v{{ pgweb_version }}/pgweb_{{ pgweb_os }}_{{ pgweb_arch }}.zip
+    dest=/usr/local/src/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}.zip
+
+- name: Extract and install pgweb
+  unarchive: src=/usr/local/src/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}.zip
+             dest=/usr/local/bin
+             copy=no
+
+- name: Rename pgweb executable
+  command: "mv /usr/local/bin/pgweb_{{ pgweb_os }}_{{ pgweb_arch }} /usr/local/bin/pgweb"
+  args:
+    creates: "/usr/local/bin/pgweb"
