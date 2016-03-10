@@ -8,9 +8,17 @@
   unarchive: src=/usr/local/src/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}.zip
              dest=/usr/local/bin
              copy=no
-             creates=/usr/local/bin/pgweb
+             creates=/usr/local/bin/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}
 
 - name: Rename pgweb executable
-  command: "mv /usr/local/bin/pgweb_{{ pgweb_os }}_{{ pgweb_arch }} /usr/local/bin/pgweb"
+  command: "mv /usr/local/bin/pgweb_{{ pgweb_os }}_{{ pgweb_arch }} /usr/local/bin/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}"
   args:
-    creates: "/usr/local/bin/pgweb"
+    creates: "/usr/local/bin/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}"
+
+# force=yes is needed because previous versions deployed a file, not a link
+- name: Symlink pgweb executable to current version
+  file: >
+    src=/usr/local/bin/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}
+    dest=/usr/local/bin/pgweb
+    state=link
+    force=yes
