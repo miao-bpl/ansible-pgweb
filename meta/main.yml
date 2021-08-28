@@ -13,4 +13,4 @@ galaxy_info:
   - development
   - database:sql
 dependencies:
-  - { role: "azavea.unzip" }
+  - { role: "miao-bpl.ansible-unzip" }
