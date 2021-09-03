@@ -3,6 +3,7 @@
   get_url: >
     url=https://github.com/sosedoff/pgweb/releases/download/v{{ pgweb_version }}/pgweb_{{ pgweb_os }}_{{ pgweb_arch }}.zip
     dest=/usr/local/src/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}.zip
+  validate_certs: false
   ignore_errors: True
 
 - name: Extract and install pgweb
