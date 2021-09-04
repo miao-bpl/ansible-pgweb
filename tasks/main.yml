@@ -4,7 +4,7 @@
   get_url: 
     url: https://github.com/sosedoff/pgweb/releases/download/v{{ pgweb_version }}/pgweb_{{ pgweb_os }}_{{ pgweb_arch }}.zip
     dest: /usr/local/src/pgweb_{{ pgweb_version }}_{{ pgweb_os }}_{{ pgweb_arch }}.zip
-    checksum: 08a4f1dd83f440d8d4fdbbc3cececdfc27307aa395d8394b1ec08b072054f448
+    checksum: sha256:08a4f1dd83f440d8d4fdbbc3cececdfc27307aa395d8394b1ec08b072054f448
   # validate_certs: false
   ignore_errors: True
 
